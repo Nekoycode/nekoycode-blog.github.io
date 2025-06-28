@@ -20,22 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"nekoycode","root":"/nekoycode-blog.github.io/","images":"/nekoycode-blog.github.io/images","scheme":"Pisces","darkmode":true,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/nekoycode-blog.github.io/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/nekoycode-blog.github.io/js/config.js" defer></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="nekoycode blog">
-<meta property="og:url" content="https://nekoycode/nekoycode-blog.github.io/archives/index.html">
+    <meta name="description" content="部分指令速查部分本地构建与部署 构建 1hexo g 部署 1hexo d 本地服务器测试(默认端口可能会被占用) 1hexo s -p 8080  添加页面 (默认配置下生成为source&#x2F;_posts文件夹下相同或转译名称文件) 1hexo new &quot;PAGE_NAME&quot; 1hexo n &quot;PAGE_NAME&quot;  添加布局下的页面 (布局（la">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 操作查找备忘录">
+<meta property="og:url" content="https://nekoycode/nekoycode-blog.github.io/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="nekoycode blog">
+<meta property="og:description" content="部分指令速查部分本地构建与部署 构建 1hexo g 部署 1hexo d 本地服务器测试(默认端口可能会被占用) 1hexo s -p 8080  添加页面 (默认配置下生成为source&#x2F;_posts文件夹下相同或转译名称文件) 1hexo new &quot;PAGE_NAME&quot; 1hexo n &quot;PAGE_NAME&quot;  添加布局下的页面 (布局（la">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-22T08:21:40.000Z">
+<meta property="article:modified_time" content="2025-06-28T02:46:21.620Z">
 <meta property="article:author" content="nekoycode">
+<meta property="article:tag" content="README">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://nekoycode/nekoycode-blog.github.io/archives/">
+<link rel="canonical" href="https://nekoycode/nekoycode-blog.github.io/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://nekoycode/nekoycode-blog.github.io/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/","path":"2025/06/22/Hexo-操作查找笔记/","title":"Hexo 操作查找备忘录"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | nekoycode blog</title>
+<title>Hexo 操作查找备忘录 | nekoycode blog</title>
   
 
 
@@ -89,7 +94,7 @@
 
     <a href="/nekoycode-blog.github.io/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">nekoycode blog</h1>
+      <p class="site-title">nekoycode blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -142,7 +147,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -155,6 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E9%83%A8%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">部分指令速查部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%87%E6%B3%A8"><span class="nav-number">2.</span> <span class="nav-text">备注</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -204,89 +210,142 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 3 posts in total. Keep on posting.</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2025<span class="collection-year-count">3</span></span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://nekoycode/nekoycode-blog.github.io/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/nekoycode-blog.github.io/uploads/author_neko.jpg">
+      <meta itemprop="name" content="nekoycode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nekoycode blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hexo 操作查找备忘录 | nekoycode blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo 操作查找备忘录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-06-22 16:21:40" itemprop="dateCreated datePublished" datetime="2025-06-22T16:21:40+08:00">2025-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-28 10:46:21" itemprop="dateModified" datetime="2025-06-28T10:46:21+08:00">2025-06-28</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>237</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="部分指令速查部分"><a href="#部分指令速查部分" class="headerlink" title="部分指令速查部分"></a>部分指令速查部分</h1><p><strong>本地构建与部署</strong></p>
+<p>构建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>部署</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>本地服务器测试(默认端口可能会被占用)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -p 8080</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加页面</strong> (默认配置下生成为source&#x2F;_posts文件夹下相同或转译名称文件)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>添加布局下的页面</strong> (布局（layout）实际上为markdown文件，用于标明front-matter，front-matter用于文章前面添加一些变量，实现特定的功能，布局文件保存在scaffolds文件夹下)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [LAYLOUT_NAME] <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n [LAYOUT_NAME] <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>例如<strong>添加草稿</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>发布草稿</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+<!--  -->
+<p><strong>为文章添加categories和tags</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: example</span><br><span class="line">author: nekoycode</span><br><span class="line">date: 2025-06-22 16:37:02</span><br><span class="line">tags: hexo</span><br><span class="line"><span class="section">categories: blog</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><p>–draft 参数需要配合其他 commands 类别才能使用，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft -p 8080</span><br></pre></td></tr></table></figure>
+<p>用于本地服务器演示时包含草稿（&#x2F;draft&#x2F;下的文章）</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-06-28T10:47:27+08:00"
-              content="2025-06-28">
-          06-28
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/nekoycode-blog.github.io/2025/06/28/Thought%20Of%20Message%20Queue%20by%20Cpp/" itemprop="url">
-            <span itemprop="name">对于C++消息队列机制实现的思路构想</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/nekoycode-blog.github.io/tags/README/" rel="tag"># README</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/nekoycode-blog.github.io/2025/06/21/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/nekoycode-blog.github.io/2025/06/28/Thought%20Of%20Message%20Queue%20by%20Cpp/" rel="next" title="对于C++消息队列机制实现的思路构想">
+                  对于C++消息队列机制实现的思路构想 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-06-22T16:21:40+08:00"
-              content="2025-06-22">
-          06-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/nekoycode-blog.github.io/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">Hexo 操作查找备忘录</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-06-21T18:31:00+08:00"
-              content="2025-06-21">
-          06-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/nekoycode-blog.github.io/2025/06/21/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>

@@ -17,5 +17,127 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 操作查找备忘录</title>
+    <url>/nekoycode-blog.github.io/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="部分指令速查部分"><a href="#部分指令速查部分" class="headerlink" title="部分指令速查部分"></a>部分指令速查部分</h1><p><strong>本地构建与部署</strong></p>
+<p>构建</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>部署</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>本地服务器测试(默认端口可能会被占用)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s -p 8080</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加页面</strong> (默认配置下生成为source&#x2F;_posts文件夹下相同或转译名称文件)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>添加布局下的页面</strong> (布局（layout）实际上为markdown文件，用于标明front-matter，front-matter用于文章前面添加一些变量，实现特定的功能，布局文件保存在scaffolds文件夹下)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [LAYLOUT_NAME] <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n [LAYOUT_NAME] <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>例如<strong>添加草稿</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>发布草稿</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish <span class="string">&quot;PAGE_NAME&quot;</span></span><br></pre></td></tr></table></figure>
+<!--  -->
+<p><strong>为文章添加categories和tags</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: example</span><br><span class="line">author: nekoycode</span><br><span class="line">date: 2025-06-22 16:37:02</span><br><span class="line">tags: hexo</span><br><span class="line"><span class="section">categories: blog</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><p>–draft 参数需要配合其他 commands 类别才能使用，例如</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft -p 8080</span><br></pre></td></tr></table></figure>
+<p>用于本地服务器演示时包含草稿（&#x2F;draft&#x2F;下的文章）</p>
+]]></content>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对于C++消息队列机制实现的思路构想</title>
+    <url>/nekoycode-blog.github.io/2025/06/28/Thought%20Of%20Message%20Queue%20by%20Cpp/</url>
+    <content><![CDATA[<a id = "如果你不知道这是什么"/>
+
+<h1 id="如果你不知道这是什么"><a href="#如果你不知道这是什么" class="headerlink" title="如果你不知道这是什么"></a><center>如果你不知道这是什么</center></h1><p>&emsp;了解这个框架的方法笔者推荐是去看一下 Microsoft.CommunityToolkit.Mvvm 中 Messenger 通讯相关的内容，当读者了解并能使用 IRecipient，ObservableRecipient 进行消息通讯后再来读此篇文章。</p>
+<p>&emsp;在这里简短的介绍一下 IRecipient 及其相关知识：</p>
+<p>&emsp;ObservableRecipient 在 Microsoft.CommunityToolkit.Mvvm 中使用 <strong>默认的弱引用消息</strong>（WeakReferenceMessenger.Default） 进行通信，我们可以使用多种方法来注册消息，以下笔者选择为后文方便介绍的形式：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyViewModel</span> : <span class="title">ObservableRecipient</span>, <span class="title">IRecipient</span>&lt;<span class="title">MyMessage</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewModel</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        IsActive = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Receive</span>(<span class="params">MyMessage message</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 处理消息</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnActivated</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Messenger.RegisterAll(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnDeactivated</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Messenger.UnregisterAll(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;其中 IRecipient&lt;TMessage&gt; 接口的某版本的代码定义为：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IRecipient</span>&lt;<span class="title">TMessage</span>&gt;</span><br><span class="line">    <span class="keyword">where</span> <span class="title">TMessage</span> : <span class="keyword">class</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Receive</span>(<span class="params">TMessage message</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;发送消息的方式（此处的 MyMessage 为自定义类，通过构造传参或提前设置数据来为接收方传递数据）：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">WeakReferenceMessenger.Default.Send(<span class="keyword">new</span> MyMessage());</span><br></pre></td></tr></table></figure>
+<p>&emsp;在继续阅读之前读者应该深刻理解到该消息机制在对象间通讯的便捷性。</p>
+<hr>
+<h1 id="消息机制系统的构成实现"><a href="#消息机制系统的构成实现" class="headerlink" title="消息机制系统的构成实现"></a><center>消息机制系统的构成实现</center></h1><ol>
+<li><p>消息</p>
+<p>&emsp;在 Microsoft.CommunityToolkit.Mvvm 中 IRecipient 的消息识别方式是对存储的消息类型进行判断，WeakReferenceMessenger.Default 作为 IMessenger 的继承者需要通过参数来调用正确的接收者的 Receive 函数。在 C++ 中通过构造 <strong>消息基类</strong>（MessageBase）并添加共有标识符即可做到，如下为示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MessageBase</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::string <span class="title">getType</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;此处的返回类型可以替换为 enum class 类型方便代码编写与更容易的判断消息类型是否一致。</p>
+<p>&emsp;为对消息基类进行封装我们引入 <strong>消息类</strong>（Message） 作为其子类并用于真正的消息识别，以下为 Message 的实现示例：</p>
+ <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">tempalte &lt;<span class="keyword">typename</span> MessageType&gt; </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Message</span> : <span class="keyword">public</span> MessageBase &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">   	<span class="function"><span class="keyword">virtual</span> std::string <span class="title">getType</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">      	<span class="keyword">return</span> MessageType::<span class="built_in">getStaticType</span>();</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;如果不想再封装一层的话可以直接使用 Message 作为基类，本文章不提及这样的相关实现思路与注意事项。</p>
+<p>&emsp;定义一个具体消息的方式如下：</p>
+ <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ASimpleMessage</span> : <span class="keyword">public</span> Message&lt;ASimpleMessage&gt; &#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line"> 	<span class="function"><span class="type">static</span> <span class="type">const</span> std::string <span class="title">getStaticType</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> 		<span class="keyword">return</span> <span class="string">&quot;ASimpleMessage&quot;</span>;</span><br><span class="line"> 	&#125;</span><br><span class="line"></span><br><span class="line"> 	<span class="type">int</span> customParameter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;如果读者不知道上面的定义是什么意思，请阅读 <strong>奇异递归模板模式（Curiously Recurring Template Pattern, CRTP）</strong>的相关内容。Message&lt;ASimpleMessage&gt; 通过模板类型数据调用模板类的静态函数来获取子类信息。</p>
+</li>
+<li><p>消息的监听者</p>
+<p>&emsp;在 <a href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88">如果你不知道这是什么</a> 中笔者展示了一种 IRecipient 的继承使用方式：</p>
+ <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyViewModel</span> : <span class="title">ObservableRecipient</span>, <span class="title">IRecipient</span>&lt;<span class="title">MyMessage</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;这里的 IRecipient 可以看作对某个具体消息的监听者，监听者有义务实现对某个具体消息的处理方法。</p>
+<p>&emsp;为构建封装良好的框架结果以及存储便利笔者这里对监听者的基类进行实现如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MessageListenerBase</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MessageListenerBase</span>() &#123;...&#125;;</span><br><span class="line">    </span><br><span class="line">  	<span class="keyword">virtual</span> ~<span class="built_in">MessageListenerBase</span>() &#123;...&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::string <span class="title">getType</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">doHandleMessageBase</span><span class="params">(MessageBase* message)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;在此类中我们进行一些监听者通用的操作，在下文中我们会介绍到，此处暂时略过。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> MessageType&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MessageListener</span> : <span class="keyword">public</span> MessageListenerBase &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::string <span class="title">getType</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> MessageType::<span class="built_in">getStaticType</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">doHandleMessageBase</span><span class="params">(MessageBase* message)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">handleMessage</span>(<span class="built_in">dynamic_cast</span>&lt;MessageType*&gt;(message));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">handleMessage</span><span class="params">(MessageType* message)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;MessageListener将作为用于实际继承的类，由被继承的类完成对 handleMessage 方法的重写。</p>
+<p>&emsp;MessageListener将具体消息作为模板参数，拥有对消息类型的访问权，通过 MessageListenerBase 作为基类进行存储，例如我们可以将 MessageListener 在以下数据结构中存储:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;MessageListenerBase*&gt; m_listeners;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;对消息类型的访问可以通过以下方式进行：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(MessageListenerBase* listener : m_listeners) &#123;</span><br><span class="line">    std::string type = listener-&gt;<span class="built_in">getType</span>();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消息处理管道</p>
+<p>&emsp;消息处理的系统应为整个程序服务，这里我们设计为<strong>单例模式</strong>为消息系统服务。</p>
+<p>&emsp;该单例模式的实现样例如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MessageQueue</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> std::shared_ptr&lt;MessageQueue&gt; <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!s_instance)</span><br><span class="line">        &#123;</span><br><span class="line">            s_instance = std::<span class="built_in">shared_ptr</span>&lt;MessageQueue&gt;(<span class="keyword">new</span> <span class="built_in">MessageQueue</span>());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s_instance;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">    <span class="type">static</span> std::shared_ptr&lt;MessageQueue&gt; s_instance;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">MessageQueue</span>() &#123;&#125;;</span><br><span class="line">	<span class="built_in">MessageQueue</span>(<span class="type">const</span> MessageQueue&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">	<span class="type">void</span> <span class="keyword">operator</span>=(<span class="type">const</span> MessageQueue&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::shared_ptr&lt;MessageQueue&gt; MessageQueue::s_instance;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;MessageQueue 将作为消息存储、回调消息处理函数的总负责类，其中需要对消息对象进行存储，注册及取消注册的操作定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MessageQueue</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">registerListener</span><span class="params">(MessageListenerBase* listener)</span> </span>&#123;</span><br><span class="line">        <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(m_listenersMutex)</span></span>;</span><br><span class="line">		m_listeners.<span class="built_in">push_back</span>(listener);</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">unregisterListener</span><span class="params">(MessageListenerBase* listener)</span> </span>&#123;</span><br><span class="line">        <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(m_listenersMutex)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; m_listeners.<span class="built_in">size</span>(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (m_listeners[i] == listener)</span><br><span class="line">            &#123;</span><br><span class="line">                m_listeners.<span class="built_in">erase</span>(m_listeners.<span class="built_in">begin</span>() + i);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">    std::vector&lt;MessageListenerBase*&gt; m_listeners;</span><br><span class="line">    <span class="keyword">mutable</span> std::mutex m_listenersMutex;    </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;对于接下来消息的处理笔者只给出实现思路以及部分实现。</p>
+<p>&emsp;对消息的立即处理可以由下面给出的函数实现：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MessageQueue::sendMessage</span><span class="params">(std::shared_ptr&lt;MessageBase&gt; message)</span> </span>&#123;</span><br><span class="line">    <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(m_listenersMutex)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (m_currentListenerIndex = <span class="number">0</span>; m_currentListenerIndex &lt; m_listeners.<span class="built_in">size</span>();</span><br><span class="line">		 m_currentListenerIndex++)</span><br><span class="line">	&#123;</span><br><span class="line">		MessageListenerBase* listener = m_listeners[m_currentListenerIndex];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (listener-&gt;<span class="built_in">getType</span>() == message-&gt;<span class="built_in">getType</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// The listenersMutex gets unlocked so changes to listeners are possible while message handling.</span></span><br><span class="line">			m_listenersMutex.<span class="built_in">unlock</span>();</span><br><span class="line">			listener-&gt;<span class="built_in">doHandleMessageBase</span>(message.<span class="built_in">get</span>());</span><br><span class="line">			m_listenersMutex.<span class="built_in">lock</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;对于消息的自动注册，可以通过对 MessageListenerBase 的构造函数添加以下实现代码，并在该监听者销毁时自动注销：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MessageListenerBase::MessageListenerBase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MessageQueue::<span class="built_in">getInstance</span>()-&gt;<span class="built_in">registerListener</span>(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> MessageListenerBase::~<span class="built_in">MessageListenerBase</span>() &#123;</span><br><span class="line">    MessageQueue::<span class="built_in">getInstance</span>()-&gt;<span class="built_in">unregisterListener</span>(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;现在我们有一个 ASimpleMessage 作为具体的消息类，一个 MessageQueue 用于全局单例处理消息的存储、对象注册等，以下我们添加一个监听者：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ASimpleListener</span> : <span class="keyword">public</span> MessageListener&lt;ASimpleMessage&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">handleMessage</span><span class="params">(MessageType* message)</span> </span>&#123;</span><br><span class="line">        ...<span class="comment">//Handle Message</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;因为继承至 MessageListenerBase 的原因，ASimpleListener 在构造时调用父类 MessageListenerBase 的构造函数自动在 MessageQueue 中注册处理，并在销毁时自动取消注册。</p>
+<p>&emsp;在程序运行时调用 MessageQueue 单例的 sendMessage 函数即可发送并处理对应的消息。</p>
+</li>
+</ol>
+<hr>
+<h1 id="我们其实做了什么"><a href="#我们其实做了什么" class="headerlink" title="我们其实做了什么"></a><center>我们其实做了什么</center></h1><p>&emsp;在以上如此 ” 繁琐 “ 的实现中，我们仅仅是为了将正确的消息调度到正确的处理函数上。由于 C++ 本身没有反射功能，我们封装了消息类型并为之添加上能够识别彼此的标识信息（上文中为一个 std::string 类型字符串作为标识），并为每个需要监听消息的类实现了监听抽象的基类，监听本身的作用便是在消息管道中正确的调用监听者的回调处理函数（上文的 handleMessage 方法）。消息管道拥有所有监听者的指针引用，在有消息到来时遍历这些指针引用并找出匹配该消息的监听者，将消息作为参数传递到监听者的处理函数中回调，实际上为消息去找监听者。</p>
+<p>&emsp;实现中比较常用的几个思想： <strong>奇异递归模板模式（Curiously Recurring Template Pattern, CRTP）</strong>，<strong>回调（Call Back）</strong>，<strong>单例模式（Singleton Pattern）</strong></p>
+<hr>
+<p>以下SourceTrail中用到的 消息 机制框架可以直接进行使用：</p>
+<p><a href="uploads/messaging.zip">SourceTrail Message Queue Zip</a></p>
+]]></content>
+      <tags>
+        <tag>C++ 设计架构</tag>
+        <tag>CRTP</tag>
+        <tag>单例模式</tag>
+      </tags>
   </entry>
 </search>

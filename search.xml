@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hello World</title>
-    <url>/nekoycode-blog.github.io/2025/06/21/hello-world/</url>
+    <url>/2025/06/21/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Cat Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -26,7 +26,7 @@
   </entry>
   <entry>
     <title>Hexo 操作查找备忘录</title>
-    <url>/nekoycode-blog.github.io/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/</url>
+    <url>/2025/06/22/Hexo-%E6%93%8D%E4%BD%9C%E6%9F%A5%E6%89%BE%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="部分指令速查部分"><a href="#部分指令速查部分" class="headerlink" title="部分指令速查部分"></a>部分指令速查部分</h1><p><strong>本地构建与部署</strong></p>
 <p>构建</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
@@ -62,7 +62,7 @@
   </entry>
   <entry>
     <title>对于C++消息队列机制实现的思路构想</title>
-    <url>/nekoycode-blog.github.io/2025/06/28/Thought%20Of%20Message%20Queue%20by%20Cpp/</url>
+    <url>/2025/06/28/Thought%20Of%20Message%20Queue%20by%20Cpp/</url>
     <content><![CDATA[<a id = "如果你不知道这是什么"/>
 
 <h1 id="如果你不知道这是什么"><a href="#如果你不知道这是什么" class="headerlink" title="如果你不知道这是什么"></a><center>如果你不知道这是什么</center></h1><p>&emsp;了解这个框架的方法笔者推荐是去看一下 Microsoft.CommunityToolkit.Mvvm 中 Messenger 通讯相关的内容，当读者了解并能使用 IRecipient，ObservableRecipient 进行消息通讯后再来读此篇文章。</p>
